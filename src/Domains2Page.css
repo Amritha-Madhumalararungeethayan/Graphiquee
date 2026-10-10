@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap');
+
+.domains2-page {
+  container-type: inline-size;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: max(100svh, 78.4375cqw);
+  overflow: hidden;
+  background: #010d20;
+  color: #fff;
+  font-family: Nunito, Inter, sans-serif;
+}
+
+.domains2-grid,
+.domains2-stars {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.domains2-grid {
+  opacity: .35;
+  background-image:
+    linear-gradient(rgba(62, 108, 157, .25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(62, 108, 157, .25) 1px, transparent 1px);
+  background-size: 4.17cqw 4.17cqw;
+}
+
+.domains2-stars {
+  z-index: -1;
+  opacity: .82;
+  background-image:
+    radial-gradient(circle, #078d9d 2px, transparent 3px),
+    radial-gradient(circle, #234da9 2px, transparent 3px),
+    radial-gradient(circle, #858995 2px, transparent 4px),
+    radial-gradient(circle, #432b67 3px, transparent 5px);
+  background-size: 25cqw 19cqw, 32cqw 27cqw, 38cqw 31cqw, 48cqw 39cqw;
+  background-position: 8cqw 2cqw, 4cqw 5cqw, 22cqw 3cqw, 31cqw 16cqw;
+}
+
+.domains2-title {
+  position: absolute;
+  top: 5.8cqw;
+  left: 50%;
+  width: 29.7cqw;
+  margin: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: Outfit, Nunito, sans-serif;
+  font-size: 3.23cqw;
+  font-weight: 700;
+  line-height: 1.26;
+}
+
+.domains2-feature {
+  display: contents;
+}
+
+.domains2-integrate {
+  position: absolute;
+  top: 24.9cqw;
+  left: 13.8cqw;
+  width: 18.9cqw;
+  margin: 0;
+  text-align: center;
+  font-family: Outfit, Nunito, sans-serif;
+  font-size: 3.23cqw;
+  font-weight: 700;
+  line-height: 1.26;
+}
+
+.domains2-orbit {
+  position: absolute;
+  top: 14.48cqw;
+  left: 37.9cqw;
+  display: grid;
+  width: 24.1cqw;
+  height: 24.9cqw;
+  place-items: center;
+}
+
+.domains2-orbit-ticks {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.domains2-orbit-ticks line {
+  stroke: #b3d9ed;
+  stroke-width: 15;
+  stroke-linecap: square;
+}
+
+.domains2-orbit-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .42cqw;
+  white-space: nowrap;
+  font-family: Nunito, sans-serif;
+  font-size: 2.76cqw;
+  font-weight: 700;
+  line-height: 3.75cqw;
+}
+
+.domains2-figma-mark {
+  flex: none;
+  width: 3.5cqw;
+  height: 4.5cqw;
+  overflow: visible;
+  filter: grayscale(1) brightness(3.5);
+}
+
+.domains2-description {
+  position: absolute;
+  top: 24.06cqw;
+  left: 66.3cqw;
+  width: 30.7cqw;
+  margin: 0;
+  padding-left: .5cqw;
+  font-size: 1.62cqw;
+  line-height: 1.36;
+}
+
+.domains2-projects-link {
+  position: absolute;
+  top: 49.58cqw;
+  left: 37.708cqw;
+  width: 24.2cqw;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-family: Nunito, sans-serif;
+  font-size: 2.24cqw;
+  font-weight: 700;
+  line-height: 1.09;
+  letter-spacing: -0.02em;
+}
+
+.domains2-projects-link:hover,
+.domains2-projects-link:focus-visible {
+  color: #b7d9ef;
+  text-shadow: 0 0 1.2cqw rgba(95, 185, 235, .45);
+}
+
+.domains2-project-art {
+  position: absolute;
+  top: 58.35cqw;
+  left: 38.9%;
+  width: 21.05cqw;
+  height: 11.82cqw;
+  object-fit: contain;
+  opacity: .78;
+}
+
+@media (max-width: 760px) {
+  .domains2-page {
+    min-height: 100svh;
+    height: 900px;
+  }
+
+  .domains2-grid { background-size: 42px 42px; }
+  .domains2-stars { background-size: 240px 190px, 310px 250px, 370px 290px, 450px 380px; }
+
+  .domains2-title {
+    top: 70px;
+    width: 90%;
+    font-size: clamp(26px, 7vw, 38px);
+  }
+
+  .domains2-feature {
+    display: contents;
+  }
+
+  .domains2-integrate {
+    top: 175px;
+    left: 5%;
+    width: 40%;
+    font-size: clamp(24px, 7vw, 36px);
+  }
+  .domains2-orbit {
+    top: 160px;
+    left: 50%;
+    width: min(42vw, 180px);
+    height: min(44vw, 190px);
+    transform: translateX(-50%);
+  }
+  .domains2-orbit-center { gap: 8px; font-size: 16px; line-height: 1.35; }
+  .domains2-figma-mark { width: 30px; height: 40px; }
+  .domains2-description {
+    top: 390px;
+    left: 7%;
+    width: 86%;
+    padding: 0 5%;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .domains2-projects-link {
+    top: 540px;
+    left: 10%;
+    width: 80%;
+    transform: none;
+    font-size: 25px;
+    letter-spacing: -0.02em;
+  }
+
+  .domains2-project-art {
+    top: 615px;
+    left: 30%;
+    width: 40%;
+    height: 230px;
+  }
+}

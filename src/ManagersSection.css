@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap");
+
+.managers-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #010d20;
+}
+
+.managers-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1920 / 1080;
+  overflow: hidden;
+  background: #010d20;
+}
+
+.managers-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: top left;
+  overflow: hidden;
+  background: #010d20;
+}
+
+.managers-star {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  filter: blur(2.55px);
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.managers-heading {
+  position: absolute;
+  left: 854px;
+  top: 59px;
+  width: 218px;
+  height: 59px;
+  margin: 0;
+  color: #fff;
+  font-family: "Nunito", sans-serif;
+  font-size: 43px;
+  font-weight: 700;
+  line-height: 59px;
+  text-align: center;
+}
+
+.manager-card {
+  position: absolute;
+  z-index: 2;
+  width: 223px;
+  height: 252px;
+  border-radius: 10px;
+}
+
+.manager-card.purple {
+  background: linear-gradient(180deg, #3a4193, #1a1e4a);
+}
+
+.manager-card.blue {
+  background: linear-gradient(180deg, #197faf, #0a3549);
+}
+
+.manager-card.green {
+  background: linear-gradient(180deg, #579486, #19443a);
+}
+
+.manager-card.lavender {
+  background: linear-gradient(180deg, #718fd1, #304470);
+}
+
+.manager-line {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  background: #132547;
+  pointer-events: none;
+}
+
+.main-line {
+  left: 283px;
+  top: 179px;
+  width: 1356px;
+  height: 8px;
+}
+
+.heading-line {
+  left: 950px;
+  top: 120px;
+  width: 8px;
+  height: 63px;
+}
+
+.upper-line {
+  top: 183px;
+  width: 8px;
+  height: 89px;
+}
+
+.middle-line {
+  top: 524px;
+  width: 8px;
+  height: 85px;
+}
+
+.manager-glow {
+  position: absolute;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(121, 121, 121, 0.8));
+  filter: blur(9.2px);
+  pointer-events: none;
+}
+
+.glow-one {
+  left: 421px;
+  top: 167px;
+}
+
+.glow-two {
+  left: 1626px;
+  top: 169px;
+}
+
+.glow-three {
+  left: 614px;
+  top: 553px;
+}

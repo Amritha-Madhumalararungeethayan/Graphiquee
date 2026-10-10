@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap");
+
+.projects-section {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1920 / 1080;
+  overflow: hidden;
+  background: #000b20;
+}
+
+.projects-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background: #000b20;
+  transform-origin: top left;
+}
+
+.project-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2.55px);
+}
+
+.projects-section .particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(2.55px);
+}
+
+.projects-section .projects-spine {
+  z-index: 2;
+}
+
+.projects-section .project-card {
+  z-index: 3;
+}
+
+.projects-section .particle-teal {
+  background: #169b99;
+}
+
+.projects-section .particle-blue {
+  background: #152f7b;
+}
+
+.projects-section .particle-grey {
+  background: #78797c;
+}
+
+.projects-spine {
+  position: absolute;
+  width: 525.67px;
+  height: 1203.08px;
+  left: 693px;
+  top: -34px;
+  object-fit: fill;
+  transform: rotate(-0.38deg);
+}
+
+.projects-section .project-card {
+  position: absolute;
+  width: 509px;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 66px;
+  backdrop-filter: blur(17.5px);
+  -webkit-backdrop-filter: blur(17.5px);
+}
+
+.projects-section .project-card span {
+  width: 233px;
+  height: 63px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-size: 46px;
+  line-height: 63px;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+}
+
+.projects-section .project-card-1 {
+  left: 221px;
+  top: 52px;
+  background: rgba(255, 77, 80, 0.1);
+  border: 1px solid rgba(255, 77, 80, 0.1);
+}
+
+.projects-section .project-card-2 {
+  left: 630px;
+  top: 471px;
+  background: rgba(255, 230, 0, 0.1);
+  border: 1px solid rgba(255, 230, 0, 0.1);
+}
+
+.projects-section .project-card-3 {
+  left: 1249px;
+  top: 655px;
+  background: rgba(251, 2, 255, 0.1);
+  border: 1px solid rgba(251, 2, 255, 0.1);
+}

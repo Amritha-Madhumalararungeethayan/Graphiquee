@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Nunito+Sans:wght@400;600;700&display=swap");
+
+.leadership-section {
+  width: 100%;
+  margin: 0;
+  background: #010d20;
+}
+
+.leadership-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1920 / 1193;
+  overflow: hidden;
+  background: #010d20;
+}
+
+.leadership-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1193px;
+  transform-origin: top left;
+  overflow: hidden;
+  background: #010d20;
+  color: white;
+}
+
+.leadership-star {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2.55px);
+  opacity: 0.95;
+}
+
+.leadership-heading {
+  position: absolute;
+  top: 49px;
+  left: 634px;
+  width: 674px;
+  height: 47px;
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 43px;
+  font-weight: 700;
+  line-height: 1.09;
+  letter-spacing: -0.02em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.leadership-card {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  width: 223px;
+  height: 252px;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 9px 9px;
+  border-radius: 10px;
+  color: white;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.362;
+  text-align: center;
+}
+
+.leadership-card span {
+  width: 100%;
+}
+
+.leadership-card.overall,
+.leadership-card.treasurer {
+  background: linear-gradient(180deg, #718fd1, #304470);
+}
+
+.leadership-card.overall span {
+  position: absolute;
+  top: 179px;
+  left: 0;
+  padding: 0 8px;
+}
+
+.leadership-card.internal-left {
+  background: linear-gradient(180deg, #579486, #19443a);
+}
+
+.leadership-card.internal-right {
+  background: linear-gradient(180deg, #2d854c, #133d22);
+}
+
+.leadership-card.president {
+  background: linear-gradient(180deg, #197faf, #0a3549);
+}
+
+.leadership-card.director-left {
+  background: linear-gradient(180deg, #3a4193, #1a1e4a);
+  font-size: 20px;
+}
+
+.leadership-card.director-right {
+  background: linear-gradient(180deg, #8974d0, #463b6a);
+  font-size: 20px;
+}
+
+.leadership-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.lead-line {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  background: #132547;
+}
+
+.lead-line.center-top {
+  left: 940px;
+  top: 404px;
+  width: 8px;
+  height: 17px;
+}
+
+.lead-line.center-middle {
+  left: 940px;
+  top: 673px;
+  width: 8px;
+  height: 17px;
+}
+
+.lead-line.center-bottom {
+  left: 940px;
+  top: 942px;
+  width: 8px;
+  height: 114px;
+}
+
+.lead-line.left-upper {
+  left: 654px;
+  top: 584px;
+  width: 8px;
+  height: 45px;
+}
+
+.lead-line.left-lower {
+  left: 654px;
+  top: 881px;
+  width: 8px;
+  height: 132px;
+}
+
+.lead-line.right-upper {
+  left: 1229px;
+  top: 586px;
+  width: 8px;
+  height: 43px;
+}
+
+.lead-line.right-lower {
+  left: 1229px;
+  top: 881px;
+  width: 8px;
+  height: 175px;
+}
+
+.lead-line.left-branch {
+  left: 658px;
+  top: 1010px;
+  width: 286px;
+  height: 8px;
+}
+
+.lead-line.right-branch {
+  left: 944px;
+  top: 1053px;
+  width: 286px;
+  height: 8px;
+}
+
+.leadership-glow {
+  position: absolute;
+  left: 1130px;
+  top: 1024px;
+  width: 45px;
+  height: 47px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(121, 121, 121, 0.8));
+  filter: blur(9.2px);
+  pointer-events: none;
+}
+
+.leadership-button {
+  position: absolute;
+  z-index: 3;
+  left: 836px;
+  top: 1089px;
+  width: 215px;
+  height: 55px;
+  border: 1px solid #3f6fcc;
+  border-radius: 16px;
+  background: #1b2335;
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.leadership-button:hover {
+  background: #263654;
+}
+
+.leadership-button:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 4px;
+}
+
+.leadership-arrow {
+  position: absolute;
+  top: 1153px;
+  left: 940px;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+}

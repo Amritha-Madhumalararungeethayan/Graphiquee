@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Inter', sans-serif;
+  color: #f7f7ff;
+  background: #010b1b;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: #010b1b;
+}
+
+button, input, textarea { font: inherit; }
+
+.domains1 {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #010b1b;
+  color: #f7f7ff;
+}
+
+.domains1::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 18% 50%, rgba(18, 43, 111, 0.18), transparent 42%),
+    radial-gradient(ellipse at 83% 52%, rgba(32, 32, 103, 0.12), transparent 38%);
+}
+
+.domains1 > canvas,
+.domains1 > svg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Scale the 1920px Figma particle canvas into the 750px design frame. */
+.domains-layout > .figma-background {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 277.78%;
+  height: 277.78%;
+  overflow: hidden;
+  pointer-events: none;
+  transform: scale(0.36);
+  transform-origin: top left;
+}
+
+.domains-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 27.7% 27.7%;
+  align-items: center;
+  gap: 2%;
+  width: min(750px, calc(100vw - 32px));
+  aspect-ratio: 750 / 421;
+  margin: 0 auto;
+  padding: 0 4.5% 0 0;
+}
+
+.domains-art-space {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.uiux-card,
+.graphic-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 69%;
+  min-width: 0;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 20px;
+  color: #f7f7ff;
+}
+
+.domains-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.domains-card-top h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.domains-arrow {
+  flex-shrink: 0;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.uiux-card {
+  background: #34366f;
+  box-shadow: 0 0 25px rgba(52, 54, 111, 0.08);
+}
+
+.uiux-card p {
+  margin: 36px 0 25px;
+  color: #f7f7ff;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.uiux-card h2 {
+  margin: auto 0 8px;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.uiux-card ul {
+  margin: 0;
+  padding-left: 13px;
+  color: #f7f7ff;
+  font-size: 8px;
+  line-height: 1.8;
+}
+
+.uiux-card li { padding-left: 1px; }
+
+.graphic-card {
+  justify-content: space-between;
+  background:
+    radial-gradient(ellipse at 100% 110%, rgba(72, 75, 151, 0.92), transparent 48%),
+    linear-gradient(145deg, #080808 60%, #111126 100%);
+}
+
+.graphic-card h2 {
+  margin: auto 0 0;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 700px) {
+  .domains-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: center;
+    gap: 12px;
+    width: calc(100% - 28px);
+    aspect-ratio: auto;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 25px 0;
+  }
+
+  .domains-art-space {
+    grid-column: 1 / -1;
+    min-height: 150px;
+  }
+
+  .uiux-card,
+  .graphic-card {
+    height: 245px;
+    padding: 15px;
+    border-radius: 16px;
+  }
+
+  .domains-card-top h1 { font-size: 17px; }
+  .domains-arrow { font-size: 20px; }
+
+  .uiux-card p {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-size: 8px;
+    line-height: 1.6;
+  }
+
+  .uiux-card h2 { font-size: 8px; }
+  .uiux-card ul { padding-left: 12px; font-size: 8px; line-height: 1.7; }
+  .graphic-card h2 { font-size: clamp(13px, 3.6vw, 17px); }
+}
+
+@media (max-width: 380px) {
+  .domains-layout { width: calc(100% - 20px); gap: 8px; }
+
+  .uiux-card,
+  .graphic-card {
+    height: 225px;
+    padding: 11px;
+  }
+
+  .domains-card-top h1 { font-size: 15px; }
+  .domains-arrow { font-size: 18px; }
+  .uiux-card p { margin-top: 20px; margin-bottom: 16px; font-size: 7px; }
+  .uiux-card h2, .uiux-card ul { font-size: 7px; }
+  .graphic-card h2 { font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
