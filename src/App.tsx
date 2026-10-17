@@ -26,6 +26,7 @@ function AppRoutes() {
           <summary>Team <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></summary>
           <div className="site-navigation-menu">
             <NavLink to="/teamorg" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Team overview</NavLink>
+            <NavLink to="/domains1" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Domains</NavLink>
             <NavLink to="/domains2" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>What we do</NavLink>
           </div>
         </details>
@@ -48,7 +49,8 @@ function AppRoutes() {
       </nav>
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/domains1" element={<HomePage />} />
         <Route path="/teamorg" element={<TeamOrgPage />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/project2" element={<Project2 />} />
