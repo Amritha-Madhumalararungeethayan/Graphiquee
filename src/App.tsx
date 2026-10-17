@@ -1,10 +1,10 @@
 import {
   BrowserRouter,
+  Link,
   NavLink,
   Route,
   Routes,
 } from "react-router-dom";
-import { useState } from "react";
 import "./App.css";
 
 import HomePage from "./pages/HomePage";
@@ -17,59 +17,35 @@ import CartPage from "./CartPage";
 import LandingPage from "./LandingPage";
 import Domains2Page from "./Domains2Page";
 
-const appPages = [
-  { to: "/", label: "Home" },
-  { to: "/teamorg", label: "TeamOrg" },
-  { to: "/projects", label: "Projects" },
-  { to: "/project2", label: "Project 2" },
-  { to: "/graphique", label: "Graphique" },
-  { to: "/product", label: "Product" },
-  { to: "/cart", label: "Cart" },
-  { to: "/landing", label: "Landing" },
-  { to: "/domains2", label: "What We Do" },
-];
-
-function AppNavigation() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="app-navigation">
-      {isOpen && (
-        <nav className="app-navigation-panel" id="app-navigation-panel" aria-label="All pages">
-          {appPages.map(({ to, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={to === "/"}
-              className={({ isActive }) => `app-navigation-link${isActive ? " is-active" : ""}`}
-              onClick={() => setIsOpen(false)}
-            >
-              {label}
-            </NavLink>
-          ))}
-        </nav>
-      )}
-      <button
-        className="app-navigation-trigger"
-        type="button"
-        aria-expanded={isOpen}
-        aria-controls="app-navigation-panel"
-        aria-label={isOpen ? "Close page navigation" : "Open page navigation"}
-        onClick={() => setIsOpen((open) => !open)}
-      >
-        <svg viewBox="0 0 20 20" aria-hidden="true">
-          {isOpen ? <path d="m5 5 10 10M15 5 5 15" /> : <path d="M3 5h14M3 10h14M3 15h14" />}
-        </svg>
-        <span>Pages</span>
-      </button>
-    </div>
-  );
-}
-
 function AppRoutes() {
   return (
     <>
-      <AppNavigation />
+      <nav className="site-navigation" aria-label="Site navigation">
+        <NavLink to="/" end className={({ isActive }) => isActive ? "is-active" : ""}>Home</NavLink>
+        <details className="site-navigation-dropdown">
+          <summary>Team <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></summary>
+          <div className="site-navigation-menu">
+            <NavLink to="/teamorg" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Team overview</NavLink>
+            <NavLink to="/domains2" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>What we do</NavLink>
+          </div>
+        </details>
+        <details className="site-navigation-dropdown">
+          <summary>Projects <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></summary>
+          <div className="site-navigation-menu">
+            <NavLink to="/projects" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Projects</NavLink>
+            <NavLink to="/project2" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Project 2</NavLink>
+          </div>
+        </details>
+        <details className="site-navigation-dropdown">
+          <summary>Merch <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></summary>
+          <div className="site-navigation-menu">
+            <Link to="/graphique#graphique-shop" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Shop</Link>
+            <Link to="/graphique#graphique-collections" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Collections</Link>
+            <NavLink to="/product" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Product</NavLink>
+            <NavLink to="/cart" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Cart</NavLink>
+          </div>
+        </details>
+      </nav>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
