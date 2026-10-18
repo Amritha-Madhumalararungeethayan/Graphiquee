@@ -14,7 +14,7 @@
 }
 
 .site-navigation > a,
-.site-navigation-dropdown > summary {
+.site-navigation-dropdown > button {
   display: flex;
   min-height: 64px;
   align-items: center;
@@ -33,17 +33,41 @@
 .site-navigation > a:hover,
 .site-navigation > a:focus-visible,
 .site-navigation > a.is-active,
-.site-navigation-dropdown > summary:hover,
-.site-navigation-dropdown[open] > summary {
+.site-navigation-dropdown > button:hover,
+.site-navigation-dropdown > button:focus-visible,
+.site-navigation-dropdown > button[aria-expanded="true"] {
   color: #36e0dc;
   outline: none;
 }
 
 .site-navigation-dropdown { position: relative; }
-.site-navigation-dropdown > summary { list-style: none; }
-.site-navigation-dropdown > summary::-webkit-details-marker { display: none; }
+.site-navigation-dropdown > button {
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #dce8f7;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color .16s ease;
+}
 
-.site-navigation-dropdown > summary svg {
+.site-navigation-dropdown > button:hover,
+.site-navigation-dropdown > button:focus-visible,
+.site-navigation-dropdown > button[aria-expanded="true"] {
+  color: #36e0dc;
+  outline: none;
+}
+
+.site-navigation-dropdown > button svg {
   width: 12px;
   height: 12px;
   fill: none;
@@ -54,7 +78,7 @@
   transition: transform .16s ease;
 }
 
-.site-navigation-dropdown[open] > summary svg { transform: rotate(180deg); }
+.site-navigation-dropdown > button[aria-expanded="true"] svg { transform: rotate(180deg); }
 
 .site-navigation-menu {
   position: absolute;
@@ -98,7 +122,7 @@
   }
 
   .site-navigation > a,
-  .site-navigation-dropdown > summary {
+  .site-navigation-dropdown > button {
     min-height: 58px;
     font-size: 11px;
     letter-spacing: .06em;
@@ -114,9 +138,9 @@
 @media (max-width: 420px) {
   .site-navigation { gap: 9px; }
   .site-navigation > a,
-  .site-navigation-dropdown > summary {
+  .site-navigation-dropdown > button {
     font-size: 10px;
     letter-spacing: .025em;
   }
-  .site-navigation-dropdown > summary { gap: 4px; }
+  .site-navigation-dropdown > button { gap: 4px; }
 }

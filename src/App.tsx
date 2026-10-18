@@ -5,6 +5,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import { useState } from "react";
 import "./App.css";
 
 import HomePage from "./pages/HomePage";
@@ -17,35 +18,60 @@ import CartPage from "./CartPage";
 import LandingPage from "./LandingPage";
 import Domains2Page from "./Domains2Page";
 
+type NavigationItem = { label: string; to: string };
+
+function NavigationDropdown({ label, items }: { label: string; items: NavigationItem[] }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className="site-navigation-dropdown"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsOpen(false);
+      }}
+    >
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        aria-controls={`site-navigation-${label.toLowerCase()}`}
+        onClick={() => setIsOpen((open) => !open)}
+      >
+        {label}
+        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg>
+      </button>
+      {isOpen && (
+        <div className="site-navigation-menu" id={`site-navigation-${label.toLowerCase()}`}>
+          {items.map(({ label: itemLabel, to }) => (
+            <Link key={to} to={to} onClick={() => setIsOpen(false)}>{itemLabel}</Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function AppRoutes() {
   return (
     <>
       <nav className="site-navigation" aria-label="Site navigation">
         <NavLink to="/" end className={({ isActive }) => isActive ? "is-active" : ""}>Home</NavLink>
-        <details className="site-navigation-dropdown">
-          <summary>Team <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></summary>
-          <div className="site-navigation-menu">
-            <NavLink to="/teamorg" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Team overview</NavLink>
-            <NavLink to="/domains1" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Domains</NavLink>
-            <NavLink to="/domains2" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>What we do</NavLink>
-          </div>
-        </details>
-        <details className="site-navigation-dropdown">
-          <summary>Projects <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></summary>
-          <div className="site-navigation-menu">
-            <NavLink to="/projects" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Projects</NavLink>
-            <NavLink to="/project2" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Project 2</NavLink>
-          </div>
-        </details>
-        <details className="site-navigation-dropdown">
-          <summary>Merch <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg></summary>
-          <div className="site-navigation-menu">
-            <Link to="/graphique#graphique-shop" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Shop</Link>
-            <Link to="/graphique#graphique-collections" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Collections</Link>
-            <NavLink to="/product" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Product</NavLink>
-            <NavLink to="/cart" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Cart</NavLink>
-          </div>
-        </details>
+        <NavigationDropdown label="Team" items={[
+          { label: "Team overview", to: "/teamorg" },
+          { label: "Domains", to: "/domains1" },
+          { label: "What we do", to: "/domains2" },
+        ]} />
+        <NavigationDropdown label="Projects" items={[
+          { label: "Projects", to: "/projects" },
+          { label: "Project 2", to: "/project2" },
+        ]} />
+        <NavigationDropdown label="Merch" items={[
+          { label: "Shop", to: "/graphique#graphique-shop" },
+          { label: "Collections", to: "/graphique#graphique-collections" },
+          { label: "Product", to: "/product" },
+          { label: "Cart", to: "/cart" },
+        ]} />
       </nav>
 
       <Routes>
