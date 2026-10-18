@@ -20,23 +20,36 @@ import Domains2Page from "./Domains2Page";
 
 type NavigationItem = { label: string; to: string };
 
-function NavigationDropdown({ label, items }: { label: string; items: NavigationItem[] }) {
-  const [isOpen, setIsOpen] = useState(false);
+function NavigationDropdown({
+  label,
+  items,
+  isOpen,
+  onOpen,
+  onToggle,
+  onClose,
+}: {
+  label: string;
+  items: NavigationItem[];
+  isOpen: boolean;
+  onOpen: () => void;
+  onToggle: () => void;
+  onClose: () => void;
+}) {
 
   return (
     <div
       className="site-navigation-dropdown"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseEnter={onOpen}
+      onMouseLeave={onClose}
       onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsOpen(false);
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) onClose();
       }}
     >
       <button
         type="button"
         aria-expanded={isOpen}
         aria-controls={`site-navigation-${label.toLowerCase()}`}
-        onClick={() => setIsOpen((open) => !open)}
+        onClick={onToggle}
       >
         {label}
         <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" /></svg>
@@ -44,7 +57,7 @@ function NavigationDropdown({ label, items }: { label: string; items: Navigation
       {isOpen && (
         <div className="site-navigation-menu" id={`site-navigation-${label.toLowerCase()}`}>
           {items.map(({ label: itemLabel, to }) => (
-            <Link key={to} to={to} onClick={() => setIsOpen(false)}>{itemLabel}</Link>
+            <Link key={to} to={to} onClick={onClose}>{itemLabel}</Link>
           ))}
         </div>
       )}
@@ -53,25 +66,39 @@ function NavigationDropdown({ label, items }: { label: string; items: Navigation
 }
 
 function AppRoutes() {
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+
+  const dropdown = (label: string, items: NavigationItem[]) => (
+    <NavigationDropdown
+      key={label}
+      label={label}
+      items={items}
+      isOpen={openMenu === label}
+      onOpen={() => setOpenMenu(label)}
+      onToggle={() => setOpenMenu((current) => current === label ? null : label)}
+      onClose={() => setOpenMenu((current) => current === label ? null : current)}
+    />
+  );
+
   return (
     <>
-      <nav className="site-navigation" aria-label="Site navigation">
+      <nav className="site-navigation" aria-label="Site navigation" onMouseLeave={() => setOpenMenu(null)}>
         <NavLink to="/" end className={({ isActive }) => isActive ? "is-active" : ""}>Home</NavLink>
-        <NavigationDropdown label="Team" items={[
+        {dropdown("Team", [
           { label: "Team overview", to: "/teamorg" },
           { label: "Domains", to: "/domains1" },
           { label: "What we do", to: "/domains2" },
-        ]} />
-        <NavigationDropdown label="Projects" items={[
+        ])}
+        {dropdown("Projects", [
           { label: "Projects", to: "/projects" },
           { label: "Project 2", to: "/project2" },
-        ]} />
-        <NavigationDropdown label="Merch" items={[
+        ])}
+        {dropdown("Merch", [
           { label: "Shop", to: "/graphique#graphique-shop" },
           { label: "Collections", to: "/graphique#graphique-collections" },
           { label: "Product", to: "/product" },
           { label: "Cart", to: "/cart" },
-        ]} />
+        ])}
       </nav>
 
       <Routes>
