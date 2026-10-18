@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ProductPage.css";
 
 const hoodieImage = "/d.png";
@@ -78,6 +79,7 @@ function LockIcon() {
 }
 
 export default function ProductPage() {
+  const navigate = useNavigate();
   const [selectedSize, setSelectedSize] = useState("M");
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(1);
@@ -104,14 +106,14 @@ export default function ProductPage() {
         </div>
 
         <header className="site-header">
-          <div className="brand">MERCHANDISE</div>
+          <a className="brand" href="/graphique">MERCHANDISE</a>
 
           <nav className="main-nav" aria-label="Main navigation">
-            <a href="#home">HOME</a>
-            <a href="#shop">SHOP</a>
-            <a href="#collections">COLLECTIONS</a>
-            <a href="#about">ABOUT</a>
-            <a href="#contact">CONTACT</a>
+            <a href="/graphique#graphique-home">HOME</a>
+            <a href="/graphique#graphique-shop">SHOP</a>
+            <a href="/graphique#graphique-collections">COLLECTIONS</a>
+            <a href="/graphique#graphique-about">ABOUT</a>
+            <a href="/graphique#graphique-footer">CONTACT</a>
           </nav>
 
           <div className="header-actions">
@@ -123,7 +125,7 @@ export default function ProductPage() {
               <UserIcon />
             </button>
 
-            <button className="header-icon cart-icon" aria-label="Shopping cart">
+            <button className="header-icon cart-icon" aria-label="Shopping cart" onClick={() => navigate("/cart")}>
               <CartIcon />
               <span className="cart-badge">{cartCount}</span>
             </button>
@@ -216,7 +218,10 @@ export default function ProductPage() {
 
           <button
             className="add-to-cart"
-            onClick={() => setCartCount((count) => count + quantity)}
+            onClick={() => {
+              setCartCount((count) => count + quantity);
+              navigate("/cart");
+            }}
           >
             <LockIcon />
             <span>ADD TO CART</span>

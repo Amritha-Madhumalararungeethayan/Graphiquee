@@ -54,7 +54,10 @@ body {
   font-weight: 800;
   letter-spacing: 0.2em;
   color: #00e5ff;
+  text-decoration: none;
 }
+
+.brand:hover { color: #8df7ff; }
 
 .main-nav {
   position: absolute;

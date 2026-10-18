@@ -1377,6 +1377,15 @@ button {
 
 }
 
+.graphique-product-info h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.graphique-product-info h3 a:hover {
+  color: #36e0dc;
+}
+
 
 
 .graphique-product-info p {

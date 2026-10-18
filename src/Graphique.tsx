@@ -1,4 +1,5 @@
 import { useState, type CSSProperties, type SyntheticEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Graphique.css";
 
@@ -103,6 +104,7 @@ function hideMissingImage(event: SyntheticEvent<HTMLImageElement>) {
 export default function Graphique() {
 
   const [cart, setCart] = useState(0);
+  const navigate = useNavigate();
 
 
 
@@ -205,10 +207,10 @@ export default function Graphique() {
           <a className="graphique-icon-button" href="#graphique-about" aria-label="Account">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.3" /><path d="M5.8 20v-2.2a6.2 6.2 0 0 1 12.4 0V20z" /></svg>
           </a>
-          <a className="graphique-icon-button graphique-cart" href="/cart" aria-label={`Shopping bag with ${cart} items`}>
+          <Link className="graphique-icon-button graphique-cart" to="/cart" aria-label={`Shopping bag with ${cart} items`}>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8Z" /><path d="M9 8a3 3 0 0 1 6 0" /></svg>
             <span className="graphique-cart-count">{cart}</span>
-          </a>
+          </Link>
         </div>
 
       </header>
@@ -368,7 +370,11 @@ export default function Graphique() {
 
               <div className="graphique-product-info">
 
-                <h3>{product.name}</h3>
+                <h3>
+                  {product.name === "GRAPHIQUE HOODIE" ? (
+                    <Link to="/product">{product.name}</Link>
+                  ) : product.name}
+                </h3>
 
                 <p>${product.price}</p>
 
@@ -378,7 +384,10 @@ export default function Graphique() {
 
                   className="graphique-add-cart"
 
-                  onClick={() => setCart((count) => count + 1)}
+                  onClick={() => {
+                    setCart((count) => count + 1);
+                    navigate("/cart");
+                  }}
 
                 >
 
@@ -427,6 +436,8 @@ export default function Graphique() {
               <a href="#graphique-home">Home</a>
               <a href="#graphique-shop">Shop</a>
               <a href="#graphique-collections">Collections</a>
+              <Link to="/product">Product</Link>
+              <Link to="/cart">Cart</Link>
               <a href="#graphique-about">About</a>
               <a href="#graphique-footer">Contacts</a>
             </div>
